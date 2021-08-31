@@ -23,7 +23,7 @@
             contenedor.setAttribute("id", "p" + i);
             let producto = `
             <div class="card" style="width: 18rem; margin-top: 20px;">
-                <img src="${item_M[i].thumbnail}" class="card-img-top" alt="...">
+                <img src="${item_M[i].thumbnail}" id=imagen class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${item_M[i].title}</h5>
                     <p class="card-text">${item_M[i].address.state_name}.</p>
