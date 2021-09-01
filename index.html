@@ -1,61 +1,158 @@
-
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
-    
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/283e7ac55c.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
-    <title>Bienvenidos!</title>
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.87.0">
+    <title>My Tool of Tuning</title>
 
-    </head>
+    <link rel="canonical" href="product.css">
 
-    <body>
-      
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">Mi tiendita!</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="checkout.html">Carrito</a>
-                  </li>
-                  <li class="nav-item" >
-                    <img src="/Tarea_1/images/carShop_icon.png" alt="" srcset="" width="15px" height="15px" >
-                  </li>
-                </ul>
-                <form class="d-flex">
-                  <input class="form-control me-2" type="search" placeholder="Buscar producto" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Buscar</button>
-                </form>
-              </div>
-            </div>
-          </nav>
-       
-
-      <div class="container" id = "fondo">
-          <div class="container" id="products" >
-            
-          </div>
-      </div>
-                
-        <footer class="footer mt-auto py-3 bg-dark">
-          <div class="container">
-              <span class="text-muted">Place sticky footer content here.</span>
-          </div>
-      </footer>
-
-    </body>
     
-    <script src="script.js"></script>
 
+    <!-- Bootstrap core CSS -->
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="product.css" rel="stylesheet">
+  </head>
+  <body>
+    
+    <header class="site-header sticky-top py-1" >
+      <nav class="container d-flex flex-column flex-md-row justify-content-around">
+        <a class="py-2 d-none d-md-inline-block" href="index.html">My Tool of Tuning</a>
+        <a class="nav-link dropdown-slider" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Categorias</a>
+        <ul class="dropdown-menu" id="menu">
+        </ul>
+        <a class="py-2 d-none d-md-inline-block" href="./carrito.html">Carrito</a>
+        <input class=" type="search" placeholder="Buscar producto" aria-label="Search">
+        <button class="btn btn-secondary" type="submit">Buscar</button>
+      </nav>
+    </header>
+
+<main>
+  <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light " id="start">
+    <div id="start" >
+      <div class="col-md-5 p-lg-5 mx-auto my-5" >
+
+        <h1 class="display-4 fw-normal">Tunea tu nave</h1>
+        <p class="lead fw-normal">Contamos con una gran variedad de prductos para automoviles y motocicletas.</p>
+        
+      
+      </div>
+    </div>
+  </div>
+
+  <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+    <div class="bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+      <div class="my-3 py-3">
+        <h2 class="display-5">Tuning</h2>
+        <p class="lead">Variedad de luces led, calcas, volates deportivos, etc..</p>
+      </div>
+      <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+      <img src="./images/front-part-of-brand-new-automobile-modern-black-interior-conception-of-vehicles.jpg" width="auto" height="300px"></div>
+    </div>
+    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+      <div class="my-3 p-3">
+        <h2 class="display-5">Accesorios para motocicletas</h2>
+        <p class="lead">Escapes, rines, cascos, etc..</p>
+      </div>
+      <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+      <img src="./images/motorcycle-luxury-items-close-up-headlights-shock-absorber-wheel-wing-toning.jpg" width="auto" height="300px"></div>
+    </div>
+  </div>
+
+  <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+      <div class="my-3 p-3">
+        <h2 class="display-5">Accesorios para vehiculos</h2>
+        <p class="lead">Estampas, tubos de escape, rines, luces led, luces zenon, etc..</p>
+      </div>
+      <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+      <img src="./images/pexels-markus-spiske-4525472.jpg" width="auto" height="320px"></div>
+    </div>
+    <div class="bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+      <div class="my-3 py-3">
+        <h2 class="display-5">Herramientas</h2>
+        <p class="lead">Variedad de herramientas tales como: llaves, dados, matracas, cajoneras, herramientas especializadas, etc..</p>
+      </div>
+      <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+      <img src="./images/pexels-pixabay-221045.jpg" width="auto" height="300px"></div>
+
+    </div>
+  </div>
+
+</main>
+
+<footer class="container py-5">
+  <div class="row">
+    <div class="col-12 col-md">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img" viewBox="0 0 24 24"><title>Product</title><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/></svg>
+      <small class="d-block mb-3 text-muted">&copy; 2017–2021</small>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Features</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="link-secondary" href="#">Cool stuff</a></li>
+        <li><a class="link-secondary" href="#">Random feature</a></li>
+        <li><a class="link-secondary" href="#">Team feature</a></li>
+        <li><a class="link-secondary" href="#">Stuff for developers</a></li>
+        <li><a class="link-secondary" href="#">Another one</a></li>
+        <li><a class="link-secondary" href="#">Last time</a></li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Resources</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="link-secondary" href="#">Resource name</a></li>
+        <li><a class="link-secondary" href="#">Resource</a></li>
+        <li><a class="link-secondary" href="#">Another resource</a></li>
+        <li><a class="link-secondary" href="#">Final resource</a></li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Resources</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="link-secondary" href="#">Business</a></li>
+        <li><a class="link-secondary" href="#">Education</a></li>
+        <li><a class="link-secondary" href="#">Government</a></li>
+        <li><a class="link-secondary" href="#">Gaming</a></li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>About</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="link-secondary" href="#">Team</a></li>
+        <li><a class="link-secondary" href="#">Locations</a></li>
+        <li><a class="link-secondary" href="#">Privacy</a></li>
+        <li><a class="link-secondary" href="#">Terms</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./script.js"></script>
+      
+  </body>
 </html>

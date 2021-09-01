@@ -1,28 +1,31 @@
-    async function getOfertas(){
-        let url = " https://api.mercadolibre.com/seller-promotions/promotions/LGH-MLM1000/items?promotion_type=LIGHTNING"
+let url = "https://api.mercadolibre.com/sites/MLM/search?category="   
+
+    async function getCategorias(){
+        let url = "https://api.mercadolibre.com/categories/MLM1747"
         let res = await fetch(url);
         const data = await res.json();
-      
-        console.log(data);
-    
+        var categories_m = data['children_categories'];
+        console.log(categories_m);
+        mostrarCategorias(categories_m);
     }
 
 
-    async function getItems(){
-        let url = "https://api.mercadolibre.com/sites/MLM/search?category=MLM1747"
-        let res = await fetch(url);
+    async function getItems(url){
+       
+        let res = await fetch(url+"MLM1747");
         const data = await res.json();
         var item_M = data['results'];
         console.log(item_M);
         mostrarItems(item_M);
     }
+
     function mostrarItems(item_M){  
         let products = document.getElementById("products");
         for (let i = 0; i < item_M.length; i++) {
             var contenedor = document.createElement("div");
             contenedor.setAttribute("id", "p" + i);
             let producto = `
-            <div class="card" style="width: 18rem; margin-top: 20px;">
+            <div class="card" style="width: 18rem; margin-top: 18px;">
                 <img src="${item_M[i].thumbnail}" id=imagen class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${item_M[i].title}</h5>
@@ -34,10 +37,27 @@
             contenedor.innerHTML += producto
             products.appendChild(contenedor)
         }
+
     }
 
-getItems()
-getOfertas()
+     async function mostrarCategorias(categories_m){
+        let menu = document.getElementById("menu");
+        for (let i = 0; i < categories_m.length; i++) {
+           
+            var contenedor = document.createElement("li");
+            
+            let item = `<li> <a class="dropdown-item" onclick=getItems("${url+categories_m[i].id}")>${categories_m[i].name}</a></li>`;
+
+            console.log(url+categories_m[i].id)
+            contenedor.innerHTML = item;
+            menu.appendChild(contenedor);
+            
+        }
+    }
+
+getCategorias()
+getItems(url)
+
 
 class CarShop{
 

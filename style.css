@@ -1,8 +1,7 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Bebas Neue', cursive;
     background-image: url('images/682.jpg');
     height: 100%;
     background-repeat: no-repeat;
@@ -17,8 +16,19 @@ body {
     align-items: flex-start;
 }
 #imagen{
-  
     image-rendering: crisp-edges;
+}
+
+#check{
+    background-image: url('./images/complete_shop.jpg');
+    height: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+#foot{
+    display: block;
     
 }
 
