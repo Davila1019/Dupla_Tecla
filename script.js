@@ -1,5 +1,5 @@
 let url = "https://api.mercadolibre.com/sites/MLM/search?category="   
-
+let inicio = "MLM1747"
     async function getCategorias(){
         let url = "https://api.mercadolibre.com/categories/MLM1747"
         let res = await fetch(url);
@@ -11,16 +11,16 @@ let url = "https://api.mercadolibre.com/sites/MLM/search?category="
 
 
     async function getItems(url){
-       
-        let res = await fetch(url+"MLM1747");
+        let res = await fetch(url);
         const data = await res.json();
         var item_M = data['results'];
         console.log(item_M);
         mostrarItems(item_M);
     }
 
-    function mostrarItems(item_M){  
+    function showItems(item_M){   
         let products = document.getElementById("products");
+        products.innerHTML = ""
         for (let i = 0; i < item_M.length; i++) {
             var contenedor = document.createElement("div");
             contenedor.setAttribute("id", "p" + i);
@@ -40,13 +40,12 @@ let url = "https://api.mercadolibre.com/sites/MLM/search?category="
 
     }
 
-     async function mostrarCategorias(categories_m){
+     async function showCategorias(categories_m){
         let menu = document.getElementById("menu");
         for (let i = 0; i < categories_m.length; i++) {
-           
-            var contenedor = document.createElement("li");
             
-            let item = `<li> <a class="dropdown-item" onclick=getItems("${url+categories_m[i].id}")>${categories_m[i].name}</a></li>`;
+            var contenedor = document.createElement("li");
+            let item = `<li> <a class="dropdown-item" onclick="getItems('${url+categories_m[i].id}')">${categories_m[i].name}</a></li>`;
 
             console.log(url+categories_m[i].id)
             contenedor.innerHTML = item;
@@ -56,7 +55,7 @@ let url = "https://api.mercadolibre.com/sites/MLM/search?category="
     }
 
 getCategorias()
-getItems(url)
+getItems(url+inicio)
 
 
 class CarShop{
