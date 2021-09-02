@@ -1,3 +1,4 @@
+
 let url = "https://api.mercadolibre.com/sites/MLM/search?category="   
 
     async function getCategorias(){
@@ -31,7 +32,7 @@ let url = "https://api.mercadolibre.com/sites/MLM/search?category="
                     <h5 class="card-title">${item_M[i].title}</h5>
                     <p class="card-text">${item_M[i].address.state_name}.</p>
                     <h4 class="card-text">$ ${item_M[i].price}</h4>
-                    <a href="#" id="button${i} " class="btn btn-primary"> <i class="fas fa-cart-plus"></i> Agregar Carrito</a>
+                    <a href="#" id="button${i}" onclick="addProduct('${item_M[i].title}','${item_M[i].id}','${item_M[i].price}')" class="btn btn-primary"> <i class="fas fa-cart-plus"></i> Agregar Carrito</a>
                 </div>
             </div>`;
             contenedor.innerHTML += producto
@@ -68,40 +69,36 @@ let url = "https://api.mercadolibre.com/sites/MLM/search?category="
 getCategorias()
 getItems(url+"MLM1747")
 
+let Carrito = {};
 
 class CarShop{
 
-    constructor(nombre){
+    constructor(nombre,codigo,price){
         this.nombre =nombre;
-        this.articles =[];
-        this.total = 0;
+        this.codigo =codigo
+        this.price = price;
         this.pagado = false;
-    }
-
-    addProduct(article){
-        
-        this.articles.push(article);
-        carrito.push(evento.target.getAttribute())
-        alert("Articulo agregado :) !")
-        
-    }
-
-    deleteProduct(article){
-        var removeItemFromArr = ( article ) => {
-            var i = this.articles.indexOf( article );
-            i !== -1 && this.articles.splice( i, 1 );
-        };
-    }
-
-    getTotal(){
-        var total = 0;
-        for (let i = 0; i < this.articles.length; i++) {
-            const articlesInCart = this.articles.array[i];
-            var total =+ articlesInCart[i];
-        }
-        this.total = total;
     }
 
 }
 
-car = new CarShop();
+const addProduct = function(nombre,codigo,precio){
+    
+    Carrito[nombre] = new CarShop(nombre,codigo,precio);
+    console.log(Carrito)
+    alert("Articulo agregado :) !")
+    
+}
+
+const deleteProduct = function(nombre){
+    delete Carrito[nombre];
+}
+
+const getTotal = function(){
+    var total = 0;
+    for (let i = 0; i < this.articles.length; i++) {
+        const articlesInCart = this.articles.array[i];
+        var total =+ articlesInCart[i];
+    }
+    this.total = total;
+}
