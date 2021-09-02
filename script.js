@@ -1,5 +1,5 @@
 let url = "https://api.mercadolibre.com/sites/MLM/search?category="   
-let inicio = "MLM1747"
+
     async function getCategorias(){
         let url = "https://api.mercadolibre.com/categories/MLM1747"
         let res = await fetch(url);
@@ -18,7 +18,7 @@ let inicio = "MLM1747"
         mostrarItems(item_M);
     }
 
-    function showItems(item_M){   
+    function mostrarItems(item_M){   
         let products = document.getElementById("products");
         products.innerHTML = ""
         for (let i = 0; i < item_M.length; i++) {
@@ -40,7 +40,18 @@ let inicio = "MLM1747"
 
     }
 
-     async function showCategorias(categories_m){
+    async function buscar(){
+        let item = document.getElementById("item_search")
+        let busqueda = item.getValue();
+        let url = "https://api.mercadolibre.com/sites/MLA/search?q="+busqueda;
+        const data = await res.json();
+        var item_M = data['results'];
+        console.log(item_M);
+        mostrarItems(item_M);
+
+    }
+
+    async function mostrarCategorias(categories_m){
         let menu = document.getElementById("menu");
         for (let i = 0; i < categories_m.length; i++) {
             
@@ -55,7 +66,7 @@ let inicio = "MLM1747"
     }
 
 getCategorias()
-getItems(url+inicio)
+getItems(url+"MLM1747")
 
 
 class CarShop{
@@ -69,7 +80,7 @@ class CarShop{
 
     addProduct(article){
         
-        this.articles.push(articl);
+        this.articles.push(article);
         carrito.push(evento.target.getAttribute())
         alert("Articulo agregado :) !")
         
