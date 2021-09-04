@@ -29,10 +29,10 @@ let url = "https://api.mercadolibre.com/sites/MLM/search?category="
             <div class="card" style="width: 18rem; margin-top: 18px;">
                 <img src="${item_M[i].thumbnail}" id=imagen class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">${item_M[i].title}</h5>
+                    <h5 class="card-title">${item_M[i].title} </h5>
                     <p class="card-text">${item_M[i].address.state_name}.</p>
                     <h4 class="card-text">$ ${item_M[i].price}</h4>
-                    <a href="#" id="button${i}" onclick="addProduct('${item_M[i].title}','${item_M[i].id}','${item_M[i].price}')" class="btn btn-primary"> <i class="fas fa-cart-plus"></i> Agregar Carrito</a>
+                    <a id="button${i}" onclick="agregarProducto('${item_M[i].id}','${item_M[i].title}','${item_M[i].price}')" class="btn btn-primary"> <i class="fas fa-cart-plus"></i> Agregar Carrito</a>
                 </div>
             </div>`;
             contenedor.innerHTML += producto
@@ -65,40 +65,25 @@ let url = "https://api.mercadolibre.com/sites/MLM/search?category="
             
         }
     }
+    async function agregarProducto(id,nombre,precio) {
+        let Articulo = {
+            id: id,
+            nombre: nombre,
+            cantidad: 1,
+            precio: precio,
+            clave:"Una clave para protegernos a todos"
+        }
+        alert("Producto agregado al carrito! :D")
+        await fetch('http://localhost:3000/carrito', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(Articulo)
+        });
+     
+    }
 
 getCategorias()
 getItems(url+"MLM1747")
 
-let Carrito = {};
-
-class CarShop{
-
-    constructor(nombre,codigo,price){
-        this.nombre =nombre;
-        this.codigo =codigo
-        this.price = price;
-        this.pagado = false;
-    }
-
-}
-
-const addProduct = function(nombre,codigo,precio){
-    
-    Carrito[nombre] = new CarShop(nombre,codigo,precio);
-    console.log(Carrito)
-    alert("Articulo agregado :) !")
-    
-}
-
-const deleteProduct = function(nombre){
-    delete Carrito[nombre];
-}
-
-const getTotal = function(){
-    var total = 0;
-    for (let i = 0; i < this.articles.length; i++) {
-        const articlesInCart = this.articles.array[i];
-        var total =+ articlesInCart[i];
-    }
-    this.total = total;
-}
