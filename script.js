@@ -51,7 +51,6 @@ let url = "https://api.mercadolibre.com/sites/MLM/search?category="
         mostrarItems(item_M);
 
     }
-
     async function mostrarCategorias(categories_m){
         let menu = document.getElementById("menu");
         for (let i = 0; i < categories_m.length; i++) {
@@ -83,7 +82,6 @@ let url = "https://api.mercadolibre.com/sites/MLM/search?category="
         });
      
     }
-
 getCategorias()
 getItems(url+"MLM1747")
 
