@@ -35,6 +35,7 @@ app.use((res,req,next)=>{
 
 //Endpoint para obtener el Carrito
 app.get('/carrito'/*,cors(midd.corsOption)*/,function (req, res) {
+    
     res.send(db.Carrito)
 })
 

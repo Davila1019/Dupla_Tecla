@@ -1,4 +1,5 @@
-let Carrito = {};
+let Carrito = [];
+let aux = [];
 let Id = {
     cont: 0
 }
@@ -11,21 +12,24 @@ let respuesta = {
 
 class Product{
 
-    constructor(id,nombre,cantidad,precio){
+    constructor(id,nombre,cantidad,precio){ 
+        
         this.id = id
         this.nombre = nombre
         this.cantidad = cantidad
         this.precio = precio
         this.Id = Id.cont
+        
     }
 
 }
 
 const addProduct = function(id,nombre,cantidad,precio){
     
-    Carrito[id] = new Product(id,nombre,cantidad,precio);
+    Carrito.push(new Product(id,nombre,cantidad,precio));
     Id.cont++
     console.log(Carrito)
+    limpiarArreglo();
 }
 
 const deleteProduct = function(id){
@@ -53,14 +57,20 @@ const searchProduct = function (id) {
     } 
 }
 
-const getTotal = function(){
-    var total = 0;
-    for (let i = 0; i < this.articles.length; i++) {
-        const articlesInCart = this.articles.array[i];
-        var total =+ articlesInCart[i];
-    }
-    this.total = total;
+const limpiarArreglo = function ( ) {
+    for (var ib = 0; ib <= Carrito.length; ib++) {
+        for (var j = 1; j < Carrito.length; j++) {
+          if (ib != j) {
+            if (Carrito[id] == Carrito[id]) {
+              Carrito[ib].cantidad = Carrito[ib].cantidad + Carrito[j].cantidad; 
+              
+            }
+          }
+        }
+      }
 }
 
-module.exports = {Carrito,searchProduct,respuesta,addProduct,deleteProduct,getTotal}
+
+
+module.exports = {Carrito,searchProduct,respuesta,addProduct,deleteProduct}
 
