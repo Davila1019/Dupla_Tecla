@@ -25,7 +25,7 @@ log = function (req,res,next) {
 Autenticar = function (req,res,next) {
     const {nombre,codigo,clave} = req.body;
     console.log(clave)
-    if(clave == "Una clave para protegernos a todos"){
+    if(clave == "TurboMotor"){
         return next()
     }
     else{
@@ -34,8 +34,8 @@ Autenticar = function (req,res,next) {
 }
 
 const limitador = rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutos
-    max: 100, // Limite de peticiones
+    windowMs: 5 * 60 * 1000, 
+    max: 20, 
     message: 'Limite de solicitudes exedido'
 })
 

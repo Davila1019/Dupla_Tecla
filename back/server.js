@@ -21,21 +21,10 @@ app.use(midd.limitador);
 app.listen(process.env.PORT, function () {
     console.log(`Servidor iniciado en ${process.env.HOST}:${process.env.PORT}`)
 });
-/*
-app.use((res,req,next)=>{
-    if (error) {
-        console.error(error);
-        if(res.headerSent){
-            res.status(500).send("Error en el servidor"+ err.mensaje)
-        }
-    }else{
-        next();
-    }
-})*/
 
-//Endpoint para obtener el Carrito
-app.get('/carrito'/*,cors(midd.corsOption)*/,function (req, res) {
-    
+
+
+app.get('/carrito',function (req, res) {
     res.send(db.Carrito)
 })
 
@@ -44,7 +33,7 @@ app.post('/carrito',midd.Autenticar, function (req, res) {
         db.respuesta = {
             codigo: 502,
             error: true,
-            mensaje: 'Es indispensable enviar nombre y código del país'
+            mensaje: 'Es indispensable enviar todos los datos'
         }
     } else {
         if (db.searchProduct(req.body.id)) {
@@ -59,7 +48,7 @@ app.post('/carrito',midd.Autenticar, function (req, res) {
             db.respuesta = {
                 codigo: 200,
                 error: false,
-                mensaje: '¨Producto Agregado'
+                mensaje: 'Producto Agregado'
             }
         }
     }
@@ -76,7 +65,7 @@ app.delete('/carrito/:id', function (req, res) {
         }
     } else {
         db.respuesta = {
-            codigo: 200,
+            codigo: 400,
             error: false,
             mensaje: 'Producto no existe'
         }

@@ -39,7 +39,7 @@ const deleteProduct = function(id){
         Carrito[id].cantidad  = Carrito[id].cantidad  - 1;
         return true
     } else {
-        delete Carrito[id]
+        Carrito[id].pop;
         return true
      } 
     }
@@ -58,16 +58,7 @@ const searchProduct = function (id) {
 }
 
 const limpiarArreglo = function ( ) {
-    for (var ib = 0; ib <= Carrito.length; ib++) {
-        for (var j = 1; j < Carrito.length; j++) {
-          if (ib != j) {
-            if (Carrito[id] == Carrito[id]) {
-              Carrito[ib].cantidad = Carrito[ib].cantidad + Carrito[j].cantidad; 
-              
-            }
-          }
-        }
-      }
+    
 }
 
 

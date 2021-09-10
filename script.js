@@ -42,9 +42,9 @@ let url = "https://api.mercadolibre.com/sites/MLM/search?category="
     }
 
     async function buscar(){
-        let item = document.getElementById("item_search")
-        let busqueda = item.getValue();
-        let url = "https://api.mercadolibre.com/sites/MLA/search?q="+busqueda;
+        let item = document.getElementById("item_search").value;
+        let url = "https://api.mercadolibre.com/sites/MLM/search?q="+item;
+        let res = await fetch(url);
         const data = await res.json();
         var item_M = data['results'];
         console.log(item_M);
@@ -54,14 +54,11 @@ let url = "https://api.mercadolibre.com/sites/MLM/search?category="
     async function mostrarCategorias(categories_m){
         let menu = document.getElementById("menu");
         for (let i = 0; i < categories_m.length; i++) {
-            
             var contenedor = document.createElement("li");
             let item = `<li> <a class="dropdown-item" onclick="getItems('${url+categories_m[i].id}')">${categories_m[i].name}</a></li>`;
-
             console.log(url+categories_m[i].id)
             contenedor.innerHTML = item;
-            menu.appendChild(contenedor);
-            
+            menu.appendChild(contenedor); 
         }
     }
     async function agregarProducto(id,nombre,precio) {
@@ -70,9 +67,9 @@ let url = "https://api.mercadolibre.com/sites/MLM/search?category="
             nombre: nombre,
             cantidad: 1,
             precio: precio,
-            clave:"Una clave para protegernos a todos"
+            clave:"TurboMotor"
         }
-        alert("Producto agregado al carrito! :D")
+        notification();
         await fetch('http://localhost:3000/carrito', {
             method: 'POST',
             headers: {
@@ -82,6 +79,13 @@ let url = "https://api.mercadolibre.com/sites/MLM/search?category="
         });
      
     }
+
+    function notification(){
+      let toast_e = document.getElementById("liveToast");
+      var toast = new bootstrap.Toast(toast_e)
+      toast.show()
+    }
+
 getCategorias()
-getItems(url+"MLM1747")
+//getItems(url+"MLM1747")
 
