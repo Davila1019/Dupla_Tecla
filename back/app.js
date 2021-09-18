@@ -1,6 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-console.log("Hola")
 const dotenv = require('dotenv');
 dotenv.config();
 const sequileze = require('./db/conexion');
