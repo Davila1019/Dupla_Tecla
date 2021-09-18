@@ -1,4 +1,4 @@
-    async function getCart() {
+    /*async function getCart() {
         const result = await fetch('http://localhost:3000/carrito');
         const cart = await result.json();
         console.log(cart);
@@ -34,4 +34,4 @@
      
     }
 
-getCart()
+getCart()*/
