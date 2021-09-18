@@ -9,8 +9,8 @@ const sequelize = new Sequelize('productos', null, null, {
         type: 'default',
         options: {
           encrypt: true,
-          userName: 'sa',
-          password:'tecla'
+          userName: process.env.DB_USR,
+          password: process.env.DB_PASS
         }
       },
     }
