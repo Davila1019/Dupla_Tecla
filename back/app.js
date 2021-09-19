@@ -6,7 +6,8 @@ const sequileze = require('./db/conexion');
 const productsView = require('./view/productsView');
 const homeView = require('./view/homeView');
 const loginView = require('./view/loginView');
-
+const usersView = require('./view/usersView')
+const midd = require('./middlewares/midd');
 const app = express();
 
 app.use(express.json())
@@ -34,3 +35,4 @@ serverStart();
 productsView(app);
 homeView(app);
 loginView(app);
+usersView(app);

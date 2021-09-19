@@ -11,3 +11,15 @@ module.exports.findProduct = async (productId) => {
     let result = await response.find(productId);
     return result;
 }
+
+module.exports.addProduct = async (product) => {
+    let add = new productsModel();
+    let data = await add.add(product);
+    return data;
+}
+
+module.exports.deleteProduct = async (productId) => {
+    let del = new productsModel();
+    let data = await del.delete(productId);
+    return data;
+}
