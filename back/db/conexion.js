@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('productos', null, null, {
+const sequelize = new Sequelize('tienda', null, null, {
     dialect: 'mssql',
     server: process.env.DB_HOST,
     port: process.env.DB_PORT,

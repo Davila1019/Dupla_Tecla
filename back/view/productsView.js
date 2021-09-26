@@ -1,4 +1,5 @@
 const productController = require('../controller/productsController')
+const midd = require('../middlewares/midd')
 
 module.exports = async (app) => {
     app.get('/products',async(req,res) => {

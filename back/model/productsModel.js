@@ -18,24 +18,24 @@ module.exports = class productsModel {
         }
     }
 
-    //Teminar de realizar la insercion a la base de datos basandose en el query de insercion de productos del gestor de base de datos
+    
     async add (product){
         let newProduct = [
+            product.category,
             product.name,
-            product.state,
             product.price,
-            product.id_mercado
+            product.image
         ]
         console.log(newProduct)
-        try {
-            let resultado = await sequelize.query(`INSERT INTO products ([name], [state], price ,id_mercado) VALUES (?,?,?,?)`,
-            {replacements: newProduct, type: sequelize.QueryTypes.SELECT});
-            console.log(resultado)
-            return 'Alta de producto exitosa!'
-        }catch (error) {
-            console.log(error)
-            throw new Error ("Ocurrio un error al crear el nuevo libro");
-        }
+            try {
+                let resultado = await sequelize.query(`INSERT INTO products(category,[name],price,[image]) VALUES (?,?,?,?)`,
+                {replacements: newProduct, type: sequelize.QueryTypes.SELECT});
+                console.log(resultado)
+                return 'Alta de producto exitosa!'
+            }catch (error) {
+                console.log(error)
+                throw new Error ("Ocurrio un error al crear el nuevo");
+            }
     }
 
     async delete (productId){

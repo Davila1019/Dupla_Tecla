@@ -6,7 +6,8 @@ const sequileze = require('./db/conexion');
 const productsView = require('./view/productsView');
 const homeView = require('./view/homeView');
 const loginView = require('./view/loginView');
-const usersView = require('./view/usersView')
+const usersView = require('./view/usersView');
+const customersView = require('./view/customersView');
 const midd = require('./middlewares/midd');
 const app = express();
 
@@ -36,3 +37,4 @@ productsView(app);
 homeView(app);
 loginView(app);
 usersView(app);
+customersView(app);

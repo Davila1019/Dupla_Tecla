@@ -18,24 +18,30 @@ module.exports = class usersModel {
         }
     }
 
-    //Teminar de realizar la insercion a la base de datos basandose en el query de insercion de productos del gestor de base de datos
+    
     async add (user){
         let newUser = [
-            user.user,
-            user.password,
             user.email,
-            user.name
+            user.password,
+            user.name,
+            user.last_name,
+            user.phone
         ]
-        console.log(newUser)
-        try {
-            let resultado = await sequelize.query(`INSERT INTO users ([user],[password],email,[name]) VALUES (?,?,?,?)`,
-            {replacements: newUser, type: sequelize.QueryTypes.SELECT});
-            console.log(resultado)
-            return 'Alta de usuario exitosa!'
-        }catch (error) {
-            console.log(error)
-            throw new Error ("Ocurrio un error al agregar el usuario");
+        let result = await sequelize.query("SELECT * FROM users WHERE email = '" + user.email+ "'");
+        if (result[0] == '') {
+            try {
+                let resultado = await sequelize.query(`INSERT INTO users (email,[password],[name],last_name,phone) VALUES (?,?,?,?,?)`,
+                {replacements: newUser, type: sequelize.QueryTypes.SELECT});
+                console.log(resultado)
+                return 'Alta de usuario exitosa!'
+            }catch (error) {
+                console.log(error)
+                throw new Error ("Ocurrio un error al agregar el usuario");
+            } 
+        } else {
+            return "El usuario ya existe!"
         }
+        
     }
 
     async delete (userId){
