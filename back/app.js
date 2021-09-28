@@ -8,6 +8,8 @@ const homeView = require('./view/homeView');
 const loginView = require('./view/loginView');
 const usersView = require('./view/usersView');
 const customersView = require('./view/customersView');
+const singupView = require("./view/singupView")
+const logincustomView = require('./view/loginCustomers');
 const midd = require('./middlewares/midd');
 const app = express();
 
@@ -38,3 +40,5 @@ homeView(app);
 loginView(app);
 usersView(app);
 customersView(app);
+singupView(app);
+logincustomView(app);
