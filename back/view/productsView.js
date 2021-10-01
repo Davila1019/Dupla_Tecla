@@ -2,8 +2,9 @@ const productController = require('../controller/productsController')
 const autentication = require('../middlewares/autentication')
 
 module.exports = async (app) => {
-    app.get('/products',autentication.userAutentication, async(req,res) => {
-        res.send(await productController.listProducts());
+    app.get('/products/:category',autentication.userAutentication, async(req,res) => {
+        let category = req.params.category;
+        res.send(await productController.listProducts(category));
     });
 
     app.get('/products/:id',autentication.userAutentication,async(req,res) => {
@@ -19,6 +20,20 @@ module.exports = async (app) => {
     app.get('/products/del/:id',autentication.userAutentication,async(req,res) => {
         let productId = req.params.id
         res.send(await productController.deleteProduct(productId));
+    });
+
+    app.post('/products/cart',async(req,res) => {
+        let product = req.body;
+        res.send(await productController.addCart(product));
+    });
+
+    app.get('/cart',async(req,res) => {
+        res.send(await productController.getCart());
+    });
+
+    app.post('/cart/:id',async(req,res) => {
+        let productId = req.params.id;
+        res.send(await productController.delCart(productId));
     });
     
 };
