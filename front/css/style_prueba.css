@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+:root{
+    --primary : #ce2424;
+    --ligth : #ebe4e4;
+    --gray : #0ebe57;
+}
+
+body{
+    overflow: hidden;
+    font-family: 'Bebas Neue', cursive;
+    font-weight: 300;
+    color: var(--ligth);
+}
+
+.bg-primary{
+    background-color: var(--primary) !important;
+}
+
+#slidebar-container{
+    min-height: 100vh;
+}
+
+#slidebar-container .logo{
+    padding: .875ren 1.25ren;
+}
+
+#slider-container .menu{
+    width: 18ren;
+}

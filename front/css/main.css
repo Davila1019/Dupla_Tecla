@@ -1,0 +1,48 @@
+* {
+    margin: 0px;
+    padding: 0px;
+  }
+  
+  #sidebar {
+    display: flex;
+    position: fixed;
+    width: 250px;
+    height: 79%;
+    background: #70767c;
+    left: -300px;
+    transition: all 500ms linear;
+    cursor: pointer;
+    align-items:initial;  
+
+  }
+  
+  #sidebar.active {
+    left: 0px;
+  }
+  
+  #sidebar ul li {
+    color: rgba(230, 230, 230, .9);
+    list-style: none;
+    padding: 0px 0px;
+    border-bottom: 1px solid rgba(100, 100, 100, .3);
+    text-align: center;
+    
+    cursor: pointer;
+  }
+
+  #sidebar::-webkit-scrollbar{
+    width: 0px;
+    
+  }
+  #sidebar::-webkit-scrollbar-thumb{
+    width: 0px;
+    
+  }
+  
+  .logo {
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto; 
+  }
+  
+  

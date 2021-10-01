@@ -1,6 +1,3 @@
-
 .vercel
 .ENV
-
-
 node_modules

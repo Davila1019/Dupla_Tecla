@@ -2,7 +2,7 @@
 
 body {
     font-family: 'Bebas Neue', cursive;
-    background-image: url('images/682.jpg');
+    background-image: url('../images/682.jpg');
     height: 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -20,7 +20,7 @@ body {
 }
 
 #check{
-    background-image: url('./images/complete_shop.jpg');
+    background-image: url('../images/complete_shop.jpg');
     height: 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;

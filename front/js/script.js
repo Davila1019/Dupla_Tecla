@@ -1,14 +1,9 @@
+const { DOUBLE } = require("sequelize/types");
 
 let url = "https://api.mercadolibre.com/sites/MLM/search?category="   
-
-    async function getCategorias(){
-        let url = "https://api.mercadolibre.com/categories/MLM1747"
-        let res = await fetch(url);
-        const data = await res.json();
-        var categories_m = data['children_categories'];
-        console.log(categories_m);
-        mostrarCategorias(categories_m);
-    }
+//var categ;
+//var y = 0;
+    
 
 
     async function getItems(url){
@@ -27,17 +22,18 @@ let url = "https://api.mercadolibre.com/sites/MLM/search?category="
             contenedor.setAttribute("id", "p" + i);
             let producto = `
             <div class="card" style="width: 18rem; margin-top: 18px;">
-                <img src="${item_M[i].thumbnail}" id=imagen class="card-img-top" alt="...">
+                <img src="${item_M[i].image}" id=imagen class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">${item_M[i].title} </h5>
-                    <p class="card-text">${item_M[i].address.state_name}.</p>
+                    <h5 class="card-title">${item_M[i].name} </h5>
                     <h4 class="card-text">$ ${item_M[i].price}</h4>
-                    <a id="button${i}" onclick="agregarProducto('${item_M[i].id}','${item_M[i].title}','${item_M[i].price}')" class="btn btn-primary"> <i class="fas fa-cart-plus"></i> Agregar Carrito</a>
+                    <a id="button${i}" onclick="agregarProducto('${item_M[i].name}','${item_M[i].price}')" class="btn btn-primary"> <i class="fas fa-cart-plus"></i> Agregar Carrito</a>
                 </div>
             </div>`;
             contenedor.innerHTML += producto
             products.appendChild(contenedor)
+           // agregarProducto(categ[y].name,item_M[i].title,item_M[i].price,item_M[i].thumbnail);
         }
+       // y++;
 
     }
 
@@ -49,34 +45,23 @@ let url = "https://api.mercadolibre.com/sites/MLM/search?category="
         var item_M = data['results'];
         console.log(item_M);
         mostrarItems(item_M);
+    }
 
-    }
-    async function mostrarCategorias(categories_m){
-        let menu = document.getElementById("menu");
-        for (let i = 0; i < categories_m.length; i++) {
-            var contenedor = document.createElement("li");
-            let item = `<li> <a class="dropdown-item" onclick="getItems('${url+categories_m[i].id}')">${categories_m[i].name}</a></li>`;
-            console.log(url+categories_m[i].id)
-            contenedor.innerHTML = item;
-            menu.appendChild(contenedor); 
-        }
-    }
-    async function agregarProducto(id,nombre,precio) {
+    async function agregarProducto(name,price) {
+        let precio = Number.parseFloat(price)
         let Articulo = {
-            id: id,
-            nombre: nombre,
-            cantidad: 1,
-            precio: precio,
-            clave:"TurboMotor"
+            name: name,
+            price: precio
         }
-        notification();
-        await fetch('http://localhost:3000/carrito', {
+        console.log("Producto agregado")
+        await fetch('http://localhost:3000/products/cart', {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
             },
             body: JSON.stringify(Articulo)
         });
+        notification();
      
     }
 
@@ -86,6 +71,22 @@ let url = "https://api.mercadolibre.com/sites/MLM/search?category="
       toast.show()
     }
 
-getCategorias()
+    async function getProducts(category){
+        console.log(localStorage.getItem('token'))
+        let res =await fetch("http://localhost:3000/products/"+category, {
+            headers: {
+              'Authorization': 'Bearer' +localStorage.getItem('token'),
+
+            },
+        });
+        let data = await res.json();
+        let products = data[0]
+        mostrarItems(products)
+        console.log(data[0]);
+
+    }
+
+console.log(localStorage.getItem('token'));
+
 //getItems(url+"MLM1747")
 
