@@ -12,12 +12,12 @@ module.exports = async (app) => {
         res.send(await productController.findProduct(productId));
     });
 
-    app.post('/products',autentication.userAutentication ,async(req,res) => {
+    app.post('/products' ,async(req,res) => {
         let product = req.body;
         res.send(await productController.addProduct(product));
     });
 
-    app.get('/products/del/:id',autentication.userAutentication,async(req,res) => {
+    app.get('/products/del/:id',async(req,res) => {
         let productId = req.params.id
         res.send(await productController.deleteProduct(productId));
     });
