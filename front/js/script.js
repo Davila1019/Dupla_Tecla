@@ -54,6 +54,24 @@ let url = "https://api.mercadolibre.com/sites/MLM/search?category="
             price: precio
         }
         console.log("Producto agregado")
+        await fetch('http://localhost:3000/products', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(Articulo)
+        });
+        notification();
+
+    }
+
+    async function agregarProducto(name,price) {
+        let precio = Number.parseFloat(price)
+        let Articulo = {
+            name: name,
+            price: precio
+        }
+        console.log("Producto agregado")
         await fetch('http://localhost:3000/products/cart', {
             method: 'POST',
             headers: {
@@ -62,7 +80,7 @@ let url = "https://api.mercadolibre.com/sites/MLM/search?category="
             body: JSON.stringify(Articulo)
         });
         notification();
-     
+
     }
 
     function notification(){

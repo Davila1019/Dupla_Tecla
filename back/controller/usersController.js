@@ -23,3 +23,9 @@ module.exports.deleteUser = async (userId) => {
     let data = await del.delete(userId);
     return data;
 }
+
+module.exports.updateUser = async (user) => {
+    let update = new usersModel();
+    let data = await update.update(user);
+    return data;
+}

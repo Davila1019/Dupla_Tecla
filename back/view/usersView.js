@@ -19,5 +19,10 @@ module.exports = async (app) => {
         let userId = req.params.id;
         res.send(await userController.deleteUser(userId));
     });
+
+    app.get('/user/update',async(req,res) => {
+        let user = req.body;
+        res.send(await userController.updateUser(user));
+    });
     
 };

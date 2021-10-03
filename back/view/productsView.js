@@ -27,6 +27,11 @@ module.exports = async (app) => {
         res.send(await productController.addCart(product));
     });
 
+    app.post('/product/update',async(req,res) => {
+        let product = req.body;
+        res.send(await productController.updateProduct(product));
+    });
+
     app.get('/cart',async(req,res) => {
         res.send(await productController.getCart());
     });
@@ -37,3 +42,5 @@ module.exports = async (app) => {
     });
     
 };
+
+

@@ -83,4 +83,16 @@ module.exports = class productsModel {
         
     }
 
+    async update (product){
+        let result = await sequelize.query("SELECT * FROM products WHERE id= '" + product.id+ "'");
+        console.log(result)
+        if(result[0] != ''){
+            result = await sequelize.query("UPDATE products SET price= '"+product.price+"' WHERE id= '" + product.id+"'");
+            console.log(result)
+            return "Exito al actualizar";
+        }else{
+            return "El producto no existe!"
+        }
+    }
+
 }

@@ -55,4 +55,14 @@ module.exports = class usersModel {
         
     }
 
+    async update (user){
+        let result = await sequelize.query("SELECT * FROM users WHERE email= '" + user.email+ "'");
+        if(result[0] != ''){
+            result = await sequelize.query("UPDATE users SET [password]= '"+user.password+"' WHERE email= '" + user.email+"'");
+            return "Exito de consulta del usuario";
+        }else{
+            return "El usuario no existe!"
+        }
+    }
+
 }

@@ -41,3 +41,9 @@ module.exports.delCart = async (productId) => {
     let data = await del.deleteCart(productId);
     return data;
 }
+
+module.exports.updateProduct = async (product) => {
+    let update = new productsModel();
+    let data = await update.update(product);
+    return data;
+}

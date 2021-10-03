@@ -1,0 +1,44 @@
+CREATE DATABASE tienda
+GO
+
+USE tienda
+GO
+
+CREATE TABLE carrito (
+	id INT NOT NULL IDENTITY (1,1),
+	[name] VARCHAR(max) NOT NULL,
+	price DECIMAL(9,2) NOT NULL
+	PRIMARY KEY(id)
+)
+
+CREATE TABLE customers(
+	id INT NOT NULL IDENTITY(1,1),
+	email VARCHAR(50) NOT NULL,
+	[password] VARCHAR(20) NOT NULL,
+	[name] VARCHAR(20) NOT NULL,
+	last_name VARCHAR(20) NOT NULL,
+	billing_address VARCHAR(40) NOT NULL,
+	country VARCHAR(20) NOT NULL,
+	[state] VARCHAR(20) NOT NULL,
+	phone VARCHAR(10) NOT NULL,
+	PRIMARY KEY(id)
+)
+
+CREATE TABLE products(
+	id INT NOT NULL IDENTITY(1,1),
+	category VARCHAR(30) NOT NULL,
+	[name] VARCHAR(100) NOT NULL,
+	price DECIMAL(9,2) NOT NULL,
+	[image] VARCHAR(MAX) NOT NULL,
+	PRIMARY KEY(id)
+)
+
+CREATE TABLE users(
+	id INT NOT NULL IDENTITY(1,1),
+	email VARCHAR(50) NOT NULL,
+	[password] VARCHAR(20) NOT NULL,
+	[name] VARCHAR(20) NOT NULL,
+	last_name VARCHAR(20) NOT NULL,
+	phone VARCHAR(10) NOT NULL,
+	PRIMARY KEY(id)
+)
