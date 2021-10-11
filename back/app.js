@@ -11,10 +11,13 @@ const customersView = require('./view/customersView');
 const singupView = require("./view/singupView")
 const logincustomView = require('./view/loginCustomers');
 const midd = require('./middlewares/midd');
+const cookieParser = require('cookie-parser')
 const app = express();
 
 app.use(express.json())
 app.use(cors());
+
+app.use(cookieParser())
 
 app.use(express.static(__dirname + '/public'));
 app.set('view engine','ejs');

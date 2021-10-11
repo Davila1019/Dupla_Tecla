@@ -6,8 +6,9 @@ const loginModel = require("../model/loginModel")
         let login = new loginModel();
         let data= await login.find(user);
         if(data){
-            let token = jwt.sign({data},process.env.KEY) // se agrega el usuario en corchetes para hacerlo como objeto
-            console.log(token);
+            let token = jwt.sign({data},process.env.KEY ,{
+                expiresIn: process.env.JWT_TIEMPO_EXPIRA
+            }) 
             return token;
         } else{
             return "Usuario no autenticado"

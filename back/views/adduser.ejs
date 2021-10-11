@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+    
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+    .form{
+        margin: 5%;
+    }
+    </style>
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Admin</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/products">Home</a>
+                    </li>
+                </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="form" >
+        <form action="" method="post">
+        <div class="form-group">
+          <label for="exampleInputEmail">Email</label>
+          <input type="email" class="form-control" id="email" [(ngModel)]="email" placeholder="Email" required ="true">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword">Password</label>
+            <input type="text" class="form-control" id="password" placeholder="Password" required="true">
+          </div>
+        <div class="form-group">
+            <label for="exampleInputNombre">Nombre</label>
+            <input type="text" class="form-control" id="name" placeholder="Nombre" required>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputApellido">Apellido</label>
+            <input type="text" class="form-control" id="last_name" placeholder="Apellido" required>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputAddress">Dirección de entrega</label>
+            <input type="text" class="form-control" id="billing_address" required placeholder="Dirección de entrega">
+          </div>
+        <div class="form-group">
+          <label for="exampleInpuPais">País</label>
+          <input type="text" class="form-control" id="country" required placeholder="País">
+        </div>
+        <div class="form-group">
+            <label for="exampleInpuEstado">Estado</label>
+            <input type="text" class="form-control" id="state" required placeholder="Estado">
+        </div>
+        <div class="form-group">
+            <label for="exampleInpuImage">Número telefónico</label>
+            <input type="tel" class="form-control" id="phone" required placeholder="000-000-00-00">
+        </div>
+        <br>
+        <button type="button" onclick="agregarUsuario()" class="btn btn-success">Guardar</button>
+        <a href="/customers" class="btn btn-dark" >Regresar</a>
+      </form>
+    </div>
+
+    <script>
+        async function agregarUsuario(){
+        let email = document.getElementById("email").value;
+        let password = document.getElementById("password").value;
+        let name = document.getElementById("name").value;
+        let last_name = document.getElementById("last_name").value;
+        let billing_address = document.getElementById("billing_address").value;
+        let country = document.getElementById("country").value;
+        let state = document.getElementById("state").value;
+        let phone = document.getElementById("phone").value;
+        if( email == '' || password == '' ||name == ''|| last_name == '' || billing_address == '' || country == '' || state == '' || phone == '' ){
+            
+            return alert("Completa todo el formulario");
+        }
+        let User = {
+            email:email,
+            password:password,
+            name: name,
+            last_name: last_name,
+            billing_address: billing_address,
+            country: country,
+            state: state,
+            phone:phone
+        }
+        
+        let res = await fetch('http://localhost:3000/customer', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(User)
+        });
+        alert("El usuario se dió de alta exitosamente")
+
+    }
+    </script>
+
+    </body>
+ </html>

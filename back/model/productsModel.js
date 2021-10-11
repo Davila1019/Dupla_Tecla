@@ -15,6 +15,11 @@ module.exports = class productsModel {
         return result;
     }
 
+    async all (){
+        let result = await sequelize.query("SELECT * FROM products");
+        return result;
+    }
+
     async find (productId){
         let result = await sequelize.query("SELECT * FROM products WHERE id = " + productId);
         if(result[0] != ''){
@@ -87,7 +92,7 @@ module.exports = class productsModel {
         let result = await sequelize.query("SELECT * FROM products WHERE id= '" + product.id+ "'");
         console.log(result)
         if(result[0] != ''){
-            result = await sequelize.query("UPDATE products SET price= '"+product.price+"' WHERE id= '" + product.id+"'");
+            result = await sequelize.query("UPDATE products SET price= '"+product.price+"', name= '"+product.name+"' WHERE id= '" + product.id+"'");
             console.log(result)
             return "Exito al actualizar";
         }else{

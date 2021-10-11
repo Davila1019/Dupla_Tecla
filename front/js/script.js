@@ -1,11 +1,3 @@
-const { DOUBLE } = require("sequelize/types");
-
-let url = "https://api.mercadolibre.com/sites/MLM/search?category="   
-//var categ;
-//var y = 0;
-    
-
-
     async function getItems(url){
         let res = await fetch(url);
         const data = await res.json();

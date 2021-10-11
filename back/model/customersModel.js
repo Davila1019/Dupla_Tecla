@@ -59,4 +59,16 @@ module.exports = class customersModel {
         
     }
 
+    async update (customer){
+        let result = await sequelize.query("SELECT * FROM customers WHERE id= '" + customer.id+ "'");
+        console.log(result)
+        if(result[0] != ''){
+            result = await sequelize.query("UPDATE customers SET password= '"+customer.password+"', name= '"+customer.name+"' WHERE id= '" + customer.id+"'");
+            console.log(result)
+            return "Exito al actualizar";
+        }else{
+            return "El customero no existe!"
+        }
+    }
+
 }

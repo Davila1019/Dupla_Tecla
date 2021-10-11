@@ -23,3 +23,9 @@ module.exports.deleteCustomer = async (customerId) => {
     let data = await del.delete(customerId);
     return data;
 }
+
+module.exports.updateCustomer = async (customer) => {
+    let del = new customersModel();
+    let data = await del.update(customer);
+    return data;
+}

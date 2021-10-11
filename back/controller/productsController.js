@@ -6,6 +6,12 @@ module.exports.listProducts = async (category) => {
     return result;
 }
 
+module.exports.allProducts = async (category) => {
+    let response = new productsModel();
+    let result = await response.all(category);
+    return result;
+}
+
 module.exports.getCart = async () => {
     let response = new productsModel();
     let result = await response.listCart();
