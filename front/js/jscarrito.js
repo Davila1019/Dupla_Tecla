@@ -1,5 +1,12 @@
     async function getCart() {
-        const result = await fetch('http://localhost:3000/cart');
+        let token = localStorage.getItem('token')
+        let data = JSON.parse(atob(token.split('.')[1]));
+        const result = await fetch('http://localhost:3000/cart/'+data.data.email,{
+            method: 'GET',
+            headers: {
+              'authorization': token,
+            },
+        })
         const cart = await result.json();
         const carrito = cart[0];
         console.log(carrito);
@@ -26,11 +33,14 @@
     }
 
     async function borrarProducto(id) {
+        let token = localStorage.getItem('token')
+        let data = JSON.parse(atob(token.split('.')[1]));
         let url = 'http://localhost:3000/cart/'+id
         await fetch(url, {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
+              'authorization': token,
             },
         });
         notification();
@@ -39,8 +49,9 @@
 
     function notification(){
         let toast_e = document.getElementById("liveToast");
-        var toast = new bootstrap.Toast(toast_e)
-        toast.show()
+        var toast = new bootstrap.Toast(toast_e);
+        toast.show();
+        location.reload();
       }
 
 getCart()

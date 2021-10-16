@@ -12,9 +12,9 @@ module.exports.allProducts = async (category) => {
     return result;
 }
 
-module.exports.getCart = async () => {
+module.exports.getCart = async (email) => {
     let response = new productsModel();
-    let result = await response.listCart();
+    let result = await response.listCart(email);
     return result;
 }
 

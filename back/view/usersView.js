@@ -25,7 +25,7 @@ module.exports = async (app) => {
         res.send(await userController.updateUser(user));
     });
 
-    app.get('/admin',async(req,res) => {
+    app.get('/customer',async(req,res) => {
        res.render('loginuser')
     });
     

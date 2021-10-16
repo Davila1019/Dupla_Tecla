@@ -5,8 +5,8 @@ module.exports = class productsModel {
         this.product = product;
     }
 
-    async listCart (){
-        let result = await sequelize.query("SELECT * FROM carrito");
+    async listCart (email){
+        let result = await sequelize.query("SELECT * FROM carrito WHERE email_user = " +"'"+ email +"'");
         return result;
     }
 
@@ -52,11 +52,12 @@ module.exports = class productsModel {
     async addCart (product){
         let newProduct = [
             product.name,
-            product.price
+            product.price,
+            product.email
         ]
         console.log(newProduct)
             try {
-                let resultado = await sequelize.query(`INSERT INTO carrito ( [name], price ) VALUES (?,?)`,
+                let resultado = await sequelize.query(`INSERT INTO carrito ( [name], price, email_user ) VALUES (?,?,?)`,
                 {replacements: newProduct, type: sequelize.QueryTypes.SELECT});
                 console.log(resultado)
                 return 'Alta de producto exitosa!'

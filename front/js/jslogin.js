@@ -15,9 +15,13 @@ async function login() {
         },
         body: JSON.stringify(login)
     });
+    
     let token = await res.text();
     console.log(token);
-    if(token != undefined){
+    if(token == 'Usuario no autenticado' || token == undefined){
+        alert('Usuario o contraseña invalidos')
+        
+    }else{
         console.log(token);
         localStorage.setItem("token",token);
         window.location="../html/index.html";

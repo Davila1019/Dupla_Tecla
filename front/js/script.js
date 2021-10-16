@@ -58,21 +58,27 @@
     }
 
     async function agregarProducto(name,price) {
-        let precio = Number.parseFloat(price)
-        let Articulo = {
-            name: name,
-            price: precio
-        }
-        console.log("Producto agregado")
-        await fetch('http://localhost:3000/products/cart', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(Articulo)
-        });
-        notification();
-
+        
+            let token = localStorage.getItem('token')
+            let data = JSON.parse(atob(token.split('.')[1]));
+            let email = data.data.email;
+            let precio = Number.parseFloat(price)
+            let Articulo = {
+                name: name,
+                price: precio,
+                email: email
+            }
+            
+            await fetch('http://localhost:3000/products/cart', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'authorization': token,
+                },
+                body: JSON.stringify(Articulo)
+            });
+            notification();
+        
     }
 
     function notification(){
@@ -82,18 +88,28 @@
     }
 
     async function getProducts(category){
-        console.log(localStorage.getItem('token'))
-        let res =await fetch("http://localhost:3000/products/"+category, {
-            headers: {
-              'Authorization': 'Bearer' +localStorage.getItem('token'),
-
-            },
-        });
+      
+        let res =await fetch("http://localhost:3000/products/"+category);
         let data = await res.json();
         let products = data[0]
         mostrarItems(products)
         console.log(data[0]);
 
+    }
+
+    function login(){
+        if(localStorage.getItem('token') == 'Usuario no autenticado'){
+            window.location="../html/login.html";
+
+        }else{
+            alert("Ya estas logeado!")
+        }
+    }
+
+    function logOut(){
+        localStorage.setItem('token','Usuario no autenticado')
+        alert('Sesión terminada!');
+        location.reload();
     }
 
 console.log(localStorage.getItem('token'));

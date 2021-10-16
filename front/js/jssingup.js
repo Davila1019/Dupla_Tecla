@@ -27,11 +27,12 @@ async function singup() {
         },
         body: JSON.stringify(singup)
     });
-    /*let token = response;
+    let token = response;
     console.log(token);
     if(token != undefined){
         console.log(token);
         localStorage.setItem("token",token);
-    }*/
+        window.location="../html/login.html";
+    }
 
 }
