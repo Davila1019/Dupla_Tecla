@@ -1,5 +1,5 @@
 module.exports = async (app) => {
-    app.get('/',async(req,res) => {
+    app.get('/login',async(req,res) => {
         res.render('login')
     });
 };

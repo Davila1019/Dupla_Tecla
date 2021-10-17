@@ -28,7 +28,7 @@
                 <div class="text-end">
                     <img src="images/motores.png" width="48" alt="">
                 </div>
-                <h2 class="fw-bold text-center pt-5 mb-5">Bienvenido customeristrador</h2>
+                <h2 class="fw-bold text-center pt-5 mb-5">Bienvenido Administrador</h2>
                 <!--Login-->
 
                 <form action="#">
@@ -48,10 +48,7 @@
                         <button type="submit" class="btn btn-primary" onclick="login()" >Iniciar Sesión </button>
                     </div>
 
-                    <div class="my-3">
-                        <span>No tienes cuenta? <a href="" >Regístrate</a></span> <br>
-                        <span> <a href="">Recuperar Password</a> </span>
-                    </div>
+                    
                     
                 </form>
             </div>
@@ -59,6 +56,29 @@
     </div>
     
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+       async function login(){
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+
+            let login = {
+            email: email,
+            password: password
+            }
+
+            let res = await fetch('http://localhost:3000/loginAdmin', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(login)
+            });
+            
+            if(res){
+                window.location="http://localhost:3000/products";
+            }
+        }
+    </script>
    
 </body>
 

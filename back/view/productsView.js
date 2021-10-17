@@ -12,12 +12,12 @@ module.exports = async (app) => {
         res.send(await productController.findProduct(productId));
     });
 
-    app.post('/products',autentication.userAutentication ,async(req,res) => {
+    app.post('/products',autentication.adminAutentication ,async(req,res) => {
         let product = req.body;
         res.send(await productController.addProduct(product));
     });
 
-    app.get('/products/del/:id',autentication.userAutentication,async(req,res) => {
+    app.get('/products/del/:id',autentication.adminAutentication,async(req,res) => {
         let productId = req.params.id
         await productController.deleteProduct(productId);
         let bd = await productController.allProducts();
@@ -25,35 +25,35 @@ module.exports = async (app) => {
         res.render('index',{data})
     });
 
-    app.post('/products/cart', autentication.userAutentication,async(req,res) => {
+    app.post('/products/cart', autentication.adminAutentication,async(req,res) => {
         let product = req.body;
         res.send(await productController.addCart(product));
     });
 
-    app.post('/product/update',autentication.userAutentication,async(req,res) => {
+    app.post('/product/update',autentication.adminAutentication,async(req,res) => {
         let product = req.body;
         res.send(await productController.updateProduct(product));
     });
 
-    app.get('/cart/:email',autentication.userAutentication,async(req,res) => {
+    app.get('/cart/:email',autentication.adminAutentication,async(req,res) => {
         let email = req.params.email; 
         res.send(await productController.getCart(email));
     });
 
-    app.post('/cart/:id',autentication.userAutentication,async(req,res) => {
+    app.post('/cart/:id',autentication.adminAutentication,async(req,res) => {
         let productId = req.params.id;
         res.send(await productController.delCart(productId));
     });
-    app.get('/products',async(req,res) => {
+    app.get('/products',autentication.adminAutentication,async(req,res) => {
         let bd = await productController.allProducts();
         let data = bd[0];
         res.render('index',{data});
     })
-    app.get('/create',autentication.userAutentication,async(req,res) => {
+    app.get('/create',async(req,res) => {
         res.render('create');
     })
 
-    app.get('/edit/:id',autentication.userAutentication,async(req,res) => {
+    app.get('/edit/:id',autentication.adminAutentication,async(req,res) => {
         let data = req.params.id;
         res.render('edit',{data});
     })
